@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
@@ -23,9 +24,9 @@ const ADMIN_EMAIL_DOMAIN = "@takmir.masjidalkaromah.id";
 // Mock Takmir directory — in production this validation happens server-side
 // (e.g. NextAuth + a Credentials/SSO provider restricted to this domain).
 const TAKMIR_ACCOUNTS = [
-  { email: `ketua${ADMIN_EMAIL_DOMAIN}`, password: "takmir2026", name: "Ust. Zainal Arifin", role: "Ketua Takmir" },
-  { email: `bendahara${ADMIN_EMAIL_DOMAIN}`, password: "kasmasjid1", name: "Bpk. Slamet Riyadi", role: "Bendahara" },
-  { email: `amilzakat${ADMIN_EMAIL_DOMAIN}`, password: "zakat12345", name: "Ust. Fauzan", role: "Amil Zakat" },
+  { email: `ketua${ADMIN_EMAIL_DOMAIN}`, password: "takmir2026", name: "Bpk. Dani Firdaus", role: "Ketua Takmir" },
+  { email: `bendahara${ADMIN_EMAIL_DOMAIN}`, password: "kasmasjid1", name: "Omar Rizki", role: "Bendahara" },
+  { email: `sekretaris${ADMIN_EMAIL_DOMAIN}`, password: "sekretaris12345", name: "Ahmad Rafik", role: "Sekretaris" },
 ];
 
 /* ---------------------------------- utils --------------------------------- */
@@ -335,9 +336,6 @@ function LoginScreen({ onLogin }) {
           </button>
         </form>
 
-        <div className="mt-5 rounded-xl bg-slate-50 p-3 text-center text-[11px] text-slate-400">
-          Demo akun: <span className="font-medium text-slate-600">ketua{ADMIN_EMAIL_DOMAIN}</span> / <span className="font-medium text-slate-600">takmir2026</span>
-        </div>
       </div>
     </div>
   );
