@@ -24,7 +24,7 @@ const MOSQUE = {
 };
 
 // Where the Takmir (admin) portal is hosted — used only for the header link.
-const TAKMIR_PORTAL_URL = "https://takmir.masjidalkaromah.id";
+const TAKMIR_PORTAL_URL = "https://masjid-al-karomah-eta.vercel.app/takmir";
 
 /* ---------------------------------- utils --------------------------------- */
 

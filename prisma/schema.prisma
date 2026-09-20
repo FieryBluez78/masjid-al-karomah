@@ -1,0 +1,54 @@
+// prisma/schema.prisma — Masjid Al Karomah — persistent data models
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Buku Kas — financial ledger
+model Transaction {
+  id          String   @id @default(cuid())
+  type        String   // "Pemasukan" | "Pengeluaran"
+  category    String   // "Kas Masjid" | "Anak Yatim" | "Renovasi" | "Operasional"
+  description String
+  amount      Int
+  date        DateTime
+  status      String   @default("Lunas") // "Lunas" | "Pending"
+  createdAt   DateTime @default(now())
+}
+
+// Manajemen Mustahiq — zakat recipients
+model ZakatRecipient {
+  id        String   @id @default(cuid())
+  name      String
+  asnaf     String   // Fakir | Miskin | Amil | Mualaf | Riqab | Gharim | Fisabilillah | Ibnu Sabil
+  quota     Int
+  status    String   @default("Belum Disalurkan") // "Selesai" | "Belum Disalurkan"
+  phone     String
+  createdAt DateTime @default(now())
+}
+
+// Permohonan Aula — facility booking requests
+model BookingRequest {
+  id        String    @id @default(cuid())
+  fullName  String
+  whatsapp  String
+  eventType String
+  start     DateTime
+  end       DateTime?
+  notes     String?
+  status    String    @default("Pending") // "Pending" | "Disetujui" | "Ditolak"
+  createdAt DateTime  @default(now())
+}
+
+// Jadwal Petugas — weekly roster (fixed 7 rows, keyed by day name)
+model RosterEntry {
+  day     String @id // "Senin" .. "Minggu"
+  imam    String
+  khatib  String
+  muadzin String
+}
